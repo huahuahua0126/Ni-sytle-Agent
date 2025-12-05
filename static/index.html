@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ni Style Agent - 深度技术文章生成器</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 marked.js 用于渲染 Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ni Style Agent</h1>
+            <p class="subtitle">深度技术文章生成器 · 哲学视角 · 逻辑重构</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <input type="text" id="topicInput" placeholder="请输入文章主题，例如：AI Agent 的陷阱..." autocomplete="off">
+                <button id="generateBtn" onclick="startGeneration()">开始创作</button>
+            </div>
+
+            <div id="statusArea" class="status-area hidden">
+                <div class="loader"></div>
+                <span id="statusText">准备就绪...</span>
+            </div>
+
+            <div class="results-container">
+                <!-- 最终成稿 (Moved to top) -->
+                <div id="step3" class="result-card hidden final-card">
+                    <div class="card-header">
+                        <div class="step-badge final-badge">★</div>
+                        <h3>最终成稿 (Ni Style)</h3>
+                        <div class="actions">
+                            <button class="copy-btn" onclick="copyToClipboard()">复制全文</button>
+                        </div>
+                    </div>
+                    <div id="content3" class="card-content markdown-body"></div>
+                </div>
+
+                <!-- 文章大纲 -->
+                <div id="step1" class="result-card hidden">
+                    <div class="card-header" onclick="toggleCard('content1')">
+                        <div class="step-badge">1</div>
+                        <h3>文章大纲</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="content1" class="card-content markdown-body"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Qwen-Max & FastAPI</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
